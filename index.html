@@ -39,14 +39,17 @@
 
         <div class="container">
 
-            <h2 v-if="tasks.length === 0">Non ci sono più task</h2>
+            <h2 v-if="tasks.length === 0">Non ci sono più task &#128521</h2>
 
             <ul v-else class="task-list">
 
-                <li v-for="(task,index) in tasks" :class="{'done' : task.complete}" @click="task.complete = !task.complete">
+                <li v-for="(task,index) in tasks" @click="task.complete = !task.complete">
 
                     <div>
-                        <span>{{task.text}}</span>
+                        <div>
+                            <span v-if="task.complete">&#9989 </span>
+                            <span>{{task.text}}</span>
+                        </div>
                         <i @click.stop="remouveTask(index)" class="fa-solid fa-trash"></i>
                     </div>
                 

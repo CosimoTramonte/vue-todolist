@@ -27,9 +27,14 @@
 
         <div class="input-area">
            
-            <input type="text" class="form-control" placeholder="Scrivi qui la tua task">
-            <button type="button" class="btn btn-danger">Aggiungi</button>
+            <input type="text" class="form-control" placeholder="Scrivi qui la tua task" v-model.trim="newTaskText" @keyup.enter="addTask">
+
+            <button type="button" class="btn btn-danger" @click="addTask" >Aggiungi</button>
             
+        </div>
+
+        <div class="errorContainer">
+            <span class="errorTask">{{message}}</span>
         </div>
 
         <div class="container">
@@ -38,11 +43,11 @@
 
             <ul v-else class="task-list">
 
-                <li v-for="task in tasks" :class="{'done' : task.complete}">
+                <li v-for="(task,index) in tasks" :class="{'done' : task.complete}" @click="task.complete = !task.complete">
 
                     <div>
                         <span>{{task.text}}</span>
-                        <i class="fa-solid fa-trash"></i>
+                        <i @click.stop="remouveTask(index)" class="fa-solid fa-trash"></i>
                     </div>
                 
                     <hr>

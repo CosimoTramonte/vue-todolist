@@ -61,3 +61,12 @@ hr{
 .done span{
  text-decoration: line-through;
 }
+
+.errorContainer{
+    text-align: center;
+    margin: 20px 0;
+}
+
+.errorTask{
+    color: #E83B49;
+}
